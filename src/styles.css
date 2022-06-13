@@ -1,0 +1,50 @@
+p {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #939aa9;
+}
+
+.weather-box {
+  display: block;
+  margin: 0 auto;
+  top: 30px;
+  max-width: 60%;
+}
+
+.search-button {
+  width: 105px;
+}
+
+.sun-icon,
+.week-icon-sun {
+  color: #f4e711;
+}
+
+.sun-icon,
+.current-temperature {
+  align-self: center;
+  font-size: 45px;
+}
+
+.week-icon-sun,
+.week-icon-cloud {
+  font-size: 20px;
+}
+
+.sun-icon {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.degrees {
+  font-size: 15px;
+  vertical-align: text-top;
+}
+
+.degrees-link {
+  text-decoration: none;
+}
+
+.week-icon-cloud {
+  color: #5392d4;
+}
