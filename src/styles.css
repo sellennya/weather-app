@@ -4,7 +4,8 @@ p {
   color: #939aa9;
 }
 
-.weather-box {
+.weather-box,
+.open-source-text {
   display: block;
   margin: 0 auto;
   top: 30px;
@@ -47,4 +48,12 @@ p {
 
 .week-icon-cloud {
   color: #5392d4;
+}
+
+.open-source-text {
+  margin-top: 40px;
+}
+
+.open-source-link {
+  text-decoration: none;
 }
