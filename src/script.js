@@ -37,8 +37,11 @@ function defaultCity(city) {
 
 defaultCity('Lisbon');
 
+let celsiusTemperature = null;
+
 function showCityTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  let temperature = Math.round(celsiusTemperature);
   let cityName = response.data.name;
   let humidity = response.data.main.humidity;
   let wind = Math.round(response.data.wind.speed);
@@ -102,32 +105,27 @@ function showCurrentPosition(position) {
   axios.get(apiUrl).then(showCurrrentDetails);
 }
 
-// // Feature #2
-// function showCity(event) {
-//   event.preventDefault();
-//   let citySearch = document.querySelector('#city-search');
-//   let cityDisplay = document.querySelector('#city-display');
-//   cityDisplay.innerHTML = citySearch.value;
-// }
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahConversion = (celsiusTemperature * 9) / 5 + 32;
+  let displayTemp = document.querySelector('#current-temp');
+  displayTemp.innerHTML = Math.round(fahConversion);
+  fahrenheitTemp.classList.add('degrees-link-celsius');
+  celsiusTemp.classList.remove('degrees-link-celsius');
+  celsiusTemp.classList.add('degrees-link');
+}
 
-// let citySearch = document.querySelector('#search-form');
-// citySearch.addEventListener('submit', showCity);
+let fahrenheitTemp = document.querySelector('#fah-temp');
+fahrenheitTemp.addEventListener('click', showFahrenheitTemp);
 
-// // Bonus Feature
-// function showFahrenheitTemp(event) {
-//   event.preventDefault();
-//   let displayTemp = document.querySelector('#current-temp');
-//   displayTemp.innerHTML = 66;
-// }
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let displayTemp = document.querySelector('#current-temp');
+  displayTemp.innerHTML = Math.round(celsiusTemperature);
+  celsiusTemp.classList.add('degrees-link-celsius');
+  fahrenheitTemp.classList.remove('degrees-link-celsius');
+  fahrenheitTemp.classList.add('degrees-link');
+}
 
-// let fahrenheitTemp = document.querySelector('#fah-temp');
-// fahrenheitTemp.addEventListener('click', showFahrenheitTemp);
-
-// function showCelsiusTemp(event) {
-//   event.preventDefault();
-//   let displayTemp = document.querySelector('#current-temp');
-//   displayTemp.innerHTML = 24;
-// }
-
-// let celsiusTemp = document.querySelector('#celsius-temp');
-// celsiusTemp.addEventListener('click', showCelsiusTemp);
+let celsiusTemp = document.querySelector('#celsius-temp');
+celsiusTemp.addEventListener('click', showCelsiusTemp);
