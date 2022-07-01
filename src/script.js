@@ -43,16 +43,23 @@ function showCityTemperature(response) {
   let humidity = response.data.main.humidity;
   let wind = Math.round(response.data.wind.speed);
   let description = response.data.weather[0].main;
+  let icon = response.data.weather[0].icon;
   let displayTemp = document.querySelector('#current-temp');
   let displayCityName = document.querySelector('#city-display');
   let displayHumidity = document.querySelector('#humidity');
   let displayWind = document.querySelector('#wind');
   let displayDescription = document.querySelector('#description');
+  let displayIcon = document.querySelector('#icon');
   displayTemp.innerHTML = temperature;
   displayCityName.innerHTML = cityName;
   displayHumidity.innerHTML = `Humidity: ${humidity}%`;
   displayWind.innerHTML = `Wind: ${wind} km/h`;
   displayDescription.innerHTML = description;
+  displayIcon.setAttribute(
+    'src',
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
+  displayIcon.setAttribute('alt', description);
 }
 
 function showCity(event) {
@@ -67,8 +74,6 @@ function showCity(event) {
 
 let citySearch = document.querySelector('#search-form');
 citySearch.addEventListener('submit', showCity);
-
-// Bonus Point
 
 function onClickCurrentButton(event) {
   event.preventDefault();

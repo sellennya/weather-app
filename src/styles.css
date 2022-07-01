@@ -57,3 +57,12 @@ p {
 .open-source-link {
   text-decoration: none;
 }
+
+.weather-row {
+  display: flex;
+  padding: 0;
+}
+
+.weather-values {
+  align-self: center;
+}
