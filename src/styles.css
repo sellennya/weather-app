@@ -1,7 +1,11 @@
-p {
+p,
+span {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
   color: #939aa9;
+}
+
+span {
+  font-family: 'Roboto', sans-serif;
 }
 
 .weather-box,
@@ -75,4 +79,12 @@ p {
 
 .weather-values {
   align-self: center;
+}
+
+.max-temp {
+  color: #939aa9;
+}
+
+.min-temp {
+  opacity: 0.6;
 }
