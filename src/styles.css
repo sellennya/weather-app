@@ -60,8 +60,12 @@ span {
   vertical-align: text-top;
 }
 
-.week-icon-cloud {
-  color: #5392d4;
+.forecast-big-icon {
+  width: 80px;
+}
+
+.forecast-icon {
+  width: 50px;
 }
 
 .open-source-text {

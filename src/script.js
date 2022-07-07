@@ -35,9 +35,55 @@ function defaultCity(city) {
   axios.get(apiUrl).then(showCityTemperature);
 }
 
+function formatWeekDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  let currentDay = week[day];
+  return currentDay;
+}
+
+function displayForecast(response) {
+  let forecastData = response.data.daily;
+  let forecast = document.querySelector('#forecast');
+
+  let forecastHTML = '';
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `  <div class="col">
+              <p>${formatWeekDay(forecastDay.dt)}</p>
+              <img
+              class='forecast-icon'
+              src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"></>
+              <div>
+                <span class="max-temp">${Math.round(
+                  forecastDay.temp.max
+                )}° </span>
+                <span class="min-temp">${Math.round(
+                  forecastDay.temp.min
+                )}°</span> 
+              </div>
+            </div>`;
+    }
+  });
+  forecast.innerHTML = forecastHTML;
+}
+
 defaultCity('Lisbon');
 
 let celsiusTemperature = null;
+
+function getForecast(coordinates) {
+  let apiEndpoint = 'https://api.openweathermap.org/data/2.5/onecall';
+  let apiKey = '037f5c727f06280e77af4e476422de25';
+  let units = 'metric';
+  let apiUrl = `${apiEndpoint}?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function showCityTemperature(response) {
   celsiusTemperature = response.data.main.temp;
@@ -63,6 +109,8 @@ function showCityTemperature(response) {
     `http://openweathermap.org/img/wn/${icon}@2x.png`
   );
   displayIcon.setAttribute('alt', description);
+
+  getForecast(response.data.coord);
 }
 
 function showCity(event) {
