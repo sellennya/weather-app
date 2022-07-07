@@ -152,28 +152,3 @@ function showCurrentPosition(position) {
   let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(showCurrrentDetails);
 }
-
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  let fahConversion = (celsiusTemperature * 9) / 5 + 32;
-  let displayTemp = document.querySelector('#current-temp');
-  displayTemp.innerHTML = Math.round(fahConversion);
-  fahrenheitTemp.classList.add('degrees-link-celsius');
-  celsiusTemp.classList.remove('degrees-link-celsius');
-  celsiusTemp.classList.add('degrees-link');
-}
-
-let fahrenheitTemp = document.querySelector('#fah-temp');
-fahrenheitTemp.addEventListener('click', showFahrenheitTemp);
-
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let displayTemp = document.querySelector('#current-temp');
-  displayTemp.innerHTML = Math.round(celsiusTemperature);
-  celsiusTemp.classList.add('degrees-link-celsius');
-  fahrenheitTemp.classList.remove('degrees-link-celsius');
-  fahrenheitTemp.classList.add('degrees-link');
-}
-
-let celsiusTemp = document.querySelector('#celsius-temp');
-celsiusTemp.addEventListener('click', showCelsiusTemp);
