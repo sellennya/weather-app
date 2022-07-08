@@ -20,6 +20,10 @@ span {
   width: 105px;
 }
 
+.default-weather-info {
+  padding-top: 12px;
+}
+
 .sun-icon,
 .week-icon-sun {
   color: #f4e711;
@@ -78,11 +82,14 @@ span {
 
 .weather-row {
   display: flex;
-  padding: 0;
 }
 
 .weather-values {
   align-self: center;
+}
+
+#forecast {
+  text-align: center;
 }
 
 .max-temp {
