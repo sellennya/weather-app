@@ -1,4 +1,3 @@
-// Feature #1
 function formatDate(date) {
   let week = [
     'Sunday',
